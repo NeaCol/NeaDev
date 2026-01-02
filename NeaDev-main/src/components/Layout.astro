@@ -1,0 +1,28 @@
+---
+import "../../src/styles/globals.css";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+
+interface Props {
+  title: string;
+  lang?: string;
+}
+
+const { title, lang = "es" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body class="flex flex-col min-h-screen px-4 sm:px-8">
+    <Header lang={lang} />
+    <main class="w-full max-w-5xl mx-auto grow">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>
